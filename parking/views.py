@@ -62,3 +62,11 @@ def paying(request, id):
 		messages.error(request, 'Reserva inexistente')
 
 	return redirect('pagamento')
+
+def departure(request):
+
+	if request.method == 'POST':
+		id = request.POST.get('reserve')
+		return redirect('{}/out'.format(id))
+
+	return render(request, 'parking/saida.html')
