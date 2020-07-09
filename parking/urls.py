@@ -6,5 +6,6 @@ urlpatterns = [
 	path('parking', views.goingIn, name="entrada"),
 	path('pay', views.payment, name="pagamento"),
 	path('<id>/pay', views.paying),
-	path('out', views.departure, name="saida")
+	path('out', views.departure, name="saida"),
+	path('<id>/out', views.goingOut),
 ]
