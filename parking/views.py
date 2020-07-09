@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
+from datetime import datetime
 from .models import *
 
 @csrf_protect
@@ -70,3 +71,36 @@ def departure(request):
 		return redirect('{}/out'.format(id))
 
 	return render(request, 'parking/saida.html')
+
+def goingOut(request, id):
+
+	teste1 = Reserve.objects.filter(id=id)
+
+	if teste1:
+		teste2 = Reserve.objects.filter(id=id, In=True)
+		if teste2:
+			teste3 = Reserve.objects.filter(id=id, In=True, paid=False)
+			if teste3:
+				messages.error(request, 'Saída bloqueada, pague a reserva para poder sair')
+			else:
+				res = Reserve.objects.get(id=id)
+				hora = datetime.now()
+				hora2 = res.entryTime.replace(tzinfo=None)
+				difTime = '03:00:00'
+				formato = '%H:%M:%S'
+				dif = (hora - hora2) + datetime.strptime(difTime, formato)
+
+				res.departureTime = datetime.now()
+				res.time = dif
+				res.In = False
+
+				res.save()
+				
+				messages.error(request, 'Até logo')
+		else:
+			messages.error(request, 'O veículo já saiu do estacionamento')
+
+	else:
+		messages.error(request, 'Reserva inexistente')
+
+	return redirect('saida')
