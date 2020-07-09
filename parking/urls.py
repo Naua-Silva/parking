@@ -5,4 +5,5 @@ urlpatterns = [
 	path('', views.index, name="index"),
 	path('parking', views.goingIn, name="entrada"),
 	path('pay', views.payment, name="pagamento"),
+	path('<id>/pay', views.paying),
 ]
