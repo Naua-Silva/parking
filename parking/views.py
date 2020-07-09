@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib import messages
+from .models import *
 
 def index(request):
 
@@ -15,7 +17,8 @@ def goingIn(request):
 				teste2 = Reserve.objects.filter(plate=placa, In=True, paid=False)
 				teste3 = Reserve.objects.filter(plate=placa, In=True, paid=True)
 				if teste2:
-					messages.error(request, 'Veículo já dentro, para sair pague a reserva {}'.format(teste2.id))
+					teste = Reserve.objects.get(plate=placa, In=True, paid=False)
+					messages.error(request, 'Veículo já dentro, para sair pague a reserva {}'.format(teste.id))
 				elif teste3:
 					messages.error(request, 'Veículo já dentro com saída liberada')
 			else:
