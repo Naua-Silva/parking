@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import *
 
@@ -30,3 +30,12 @@ def goingIn(request):
 
 
 	return render(request, 'parking/entrada.html')
+
+def payment(request):
+	if request.method == 'POST':
+		id = int(request.POST.get('reserva'))
+
+		return redirect('{}/pay'.format(id))
+
+
+	return render(request, 'core/pagamento.html')
