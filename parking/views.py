@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_protect
 from .models import *
+
+@csrf_protect
 
 def index(request):
 
@@ -33,9 +36,29 @@ def goingIn(request):
 
 def payment(request):
 	if request.method == 'POST':
-		id = int(request.POST.get('reserva'))
+		id = request.POST.get('reserve')
 
 		return redirect('{}/pay'.format(id))
 
 
-	return render(request, 'core/pagamento.html')
+	return render(request, 'parking/pagamento.html')
+
+def paying(request, id):
+	teste1 = Reserve.objects.filter(id=id)
+
+	if teste1:
+		teste2 = Reserve.objects.filter(id=id, In=True)
+		if teste2:
+			teste3 = Reserve.objects.filter(id=id, In=True, paid=True)
+			teste4 = Reserve.objects.filter(id=id, In=True, paid=False)
+			if teste3:
+				messages.error(request, 'Esta reserva já foi paga')
+			elif teste4:
+				reserva = Reserve.objects.get(id=id)
+				reserva.paid = True
+				reserva.save()
+				messages.error(request, 'Reserva paga com sucesso! Saída liberada para placa: {}'.format(reserva.plate))
+	else:
+		messages.error(request, 'Reserva inexistente')
+
+	return redirect('pagamento')
