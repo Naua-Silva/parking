@@ -9,4 +9,5 @@ urlpatterns = [
 	path('out', views.departure, name="saida"),
 	path('<id>/out', views.goingOut),
 	path('searchHistory', views.searchHistory, name="pesquisa"),
+	path('parking/<plate>', views.searching),
 ]
