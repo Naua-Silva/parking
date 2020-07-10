@@ -15,12 +15,9 @@ def goingIn(request):
 	if request.method == 'POST':
 		placa = request.POST.get('plate')
 		if len(placa) == 8:
-			hifen = placa[3]
-			if hifen == '-':
-				letras = placa[:3]
-				if letras.isalpha():		
-					numeros = placa[4:]
-					if numeros.isnumeric():
+			if placa[3] == '-':
+				if placa[:3].isalpha():		
+					if placa[4:].isnumeric():
 						teste1 = Reserve.objects.filter(plate=placa, In=True)
 						if teste1:
 							teste2 = Reserve.objects.filter(plate=placa, In=True, paid=False)
@@ -119,5 +116,30 @@ def searchHistory(request):
 	if request.method == 'POST':
 		placa = request.POST.get('plate')
 		return redirect('parking/{}'.format(placa))
-		
+
 	return render(request, 'parking/pesquisar.html')
+
+def searching(request, plate):
+	if len(plate) == 8:
+		if plate[3] == '-':
+			if plate[:3].isalpha():		
+				if plate[4:].isnumeric():
+					reservas = Reserve.objects.filter(plate=plate)
+					if reservas:
+						context = {'reservas':reservas, 'plate':plate}
+						return render(request, 'parking/pesquisado.html', context)
+					else:
+						messages.error(request, 'Nenhum histórico encontrado')
+						return redirect('pesquisa')
+				else: 
+					messages.error(request, 'Digite uma placa válida')
+					return redirect('pesquisa')
+			else:
+				messages.error(request, 'Digite uma placa válida')
+				return redirect('pesquisa')
+		else:
+			messages.error(request, 'Digite uma placa válida')
+			return redirect('pesquisa')
+	else:
+		messages.error(request, 'Digite uma placa válida')
+		return redirect('pesquisa')
