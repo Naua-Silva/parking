@@ -114,3 +114,10 @@ def goingOut(request, id):
 		messages.error(request, 'Reserva inexistente')
 
 	return redirect('saida')
+
+def searchHistory(request):
+	if request.method == 'POST':
+		placa = request.POST.get('plate')
+		return redirect('parking/{}'.format(placa))
+		
+	return render(request, 'parking/pesquisar.html')
