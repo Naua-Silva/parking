@@ -45,8 +45,8 @@ def goingIn(request):
 def payment(request):
 	if request.method == 'POST':
 		id = request.POST.get('reserve')
-
-		return redirect('{}/pay'.format(id))
+		if id is not "":
+			return redirect('{}/pay'.format(id))
 
 
 	return render(request, 'parking/pagamento.html')
@@ -75,7 +75,8 @@ def departure(request):
 
 	if request.method == 'POST':
 		id = request.POST.get('reserve')
-		return redirect('{}/out'.format(id))
+		if id is not "":
+			return redirect('{}/out'.format(id))
 
 	return render(request, 'parking/saida.html')
 
@@ -115,7 +116,8 @@ def goingOut(request, id):
 def searchHistory(request):
 	if request.method == 'POST':
 		placa = request.POST.get('plate')
-		return redirect('parking/{}'.format(placa))
+		if placa is not "":
+			return redirect('parking/{}'.format(placa))
 
 	return render(request, 'parking/pesquisar.html')
 
