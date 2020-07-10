@@ -1,0 +1,81 @@
+*{
+	padding: 0;
+	margin: 0;
+	outline: none;
+	font-family: "Arial";
+}
+
+a{
+	text-decoration: none;	
+}
+
+.voltar-p{
+	padding: 10px;
+}
+
+.container{
+	width: 400px;
+	height: auto;
+	background-color: lightgrey;
+	border-radius: 15px 15px 0px 0px;
+	margin: 50px auto;
+}
+
+.topo{
+	width: 100%;
+	height: auto;
+	background-color: grey;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.title{
+	color: white;
+	font-size: 35px;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+.subtitle{
+	color: white;
+	text-align: right;
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+.dado{
+	width: 90%;
+	height: auto;
+	background-color: darkgrey;
+	border-radius: 10px;
+	color: white;
+	margin-left: 5%;	
+	margin-top: 10px;
+}
+
+.num{
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.tempo{
+	text-align: right;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.pesquisa-p{
+	padding: 10px;
+	margin-top: 10px;
+	background-color: darkgrey;
+	text-align: center;
+}
+
+.pesquisa-p:hover{
+	background-color: grey;
+}
+
+.pesquisa-a{
+	color: white;
+	display: block;
+}

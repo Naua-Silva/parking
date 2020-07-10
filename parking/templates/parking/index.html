@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Parking | Painel de controle</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/indexStyle.css' %}">
+</head>
+<body>
+	<div class="container">
+		<div class="topo">
+			<p class="title">Parking</p>
+		</div>
+		<a href="{% url 'entrada' %}">
+			<div class="botao"><p class="botao-content">Entrar no estacionamento</p></div>
+		</a>
+		
+		<a href="{% url 'pagamento' %}">
+			<div class="botao"><p class="botao2-content">Pagar reserva</p></div>
+		</a>
+
+		<a href="{% url 'saida' %}">
+			<div class="botao"><p class="botao-content">Sair do estacionamento</p></div>
+		</a>
+
+		<a href="{% url 'pesquisa' %}">
+			<div class="botao"><p class="botao-content">Pesquisar histórico por placa</p></div>
+		</a>
+	</div>
+
+</body>
+</html>

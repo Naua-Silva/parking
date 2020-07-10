@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Parking | Entrar no estacionamento</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/entradaStyle.css' %}">
+</head>
+<body>
+	<a href="{% url 'index' %}"><p class="voltar-p">Voltar</p></a>
+	<div class="container">
+		<div class="topo">
+			<p class="subtitle">/Entrar no estacionamento</p>
+			<p class="title">Parking</p>
+		</div>
+
+		<form method="POST">
+			<div class="formula">
+				{% csrf_token %}
+				<label for="plate" class="placa-p">Placa do veículo:</label>
+				<input type="text" class="placa" name="plate" placeholder="AAA-9999">
+			</div>
+			<input type="submit" value="Entrar" class="submito">
+		</form>
+
+		{% for m in messages %}
+		<div class="status">
+			<p class="status-p">
+				{{m}}
+			</p>
+		</div>
+		{% endfor %}
+
+		
+	</div>
+</body>
+</html>

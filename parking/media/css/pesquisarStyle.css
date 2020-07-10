@@ -1,0 +1,100 @@
+*{
+	padding: 0;
+	margin: 0;
+	outline: none;
+	font-family: "Arial";
+}
+
+a{
+	text-decoration: none;	
+}
+
+.voltar-p{
+	padding: 10px;
+}
+
+.container{
+	width: 250px;
+	height: auto;
+	min-height: 250px;
+	background-color: lightgrey;
+	margin: 100px auto;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.topo{
+	width: 250px;
+	height: auto;
+	min-height: 60px;
+	background-color: grey;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.title{
+	color: white;
+	font-size: 35px;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+.subtitle{
+	color: white;
+	font-weight: bold;
+	padding-top: 7px;
+	padding-left: 18px;
+}
+
+.formula{
+	width: 80%;
+	background-color: darkgrey;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-left: 10%;
+	padding: 15px 0;
+}
+
+.placa{
+	width: 150px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	padding: 4px;
+}
+
+.placa-p{
+	color: white;
+}
+
+.submito{
+	width: 80px;
+	height: 35px;
+	color: white;
+	background-color: darkgrey;
+	border: none;
+	border-radius: 5px;
+	margin-left: 85px;
+	margin-top: 20px;
+}
+
+.submito:hover{
+	background-color: grey;
+}
+
+.status{
+	width: 100%;
+	height: auto;
+	min-height: 30px;
+	background-color: grey;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 25px;
+}
+
+.status-p{
+	width: 200px;
+	color: white;
+	margin-left: 25px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
