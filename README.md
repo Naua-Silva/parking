@@ -1,6 +1,6 @@
 # Parking
 
-# API de controle de estacionamento com Django Rest Framework
+# Aplicação de controle de estacionamento com Django Rest Framework
 
 # Ações disponíveis:
 # Entrada:
